@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTC 단타 미니게임</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <header class="stats-grid">
+        <div class="stat-card">
+          <span class="label">현재가</span>
+          <strong id="priceValue">$0.00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">잔고</span>
+          <strong id="cashValue">$100,000.00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">포지션</span>
+          <strong id="positionValue">없음</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">진입가</span>
+          <strong id="entryValue">-</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">미실현손익</span>
+          <strong id="unrealizedValue">$0.00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">실현손익</span>
+          <strong id="realizedValue">$0.00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">남은 시간</span>
+          <strong id="timeValue">05:00</strong>
+        </div>
+        <div class="stat-card">
+          <span class="label">틱 속도</span>
+          <strong id="tickValue">300ms</strong>
+        </div>
+      </header>
+
+      <main class="main-grid">
+        <section class="chart-panel">
+          <canvas id="priceChart" width="960" height="420"></canvas>
+          <div class="summary-spec">
+            "$100,000로 시작하는 BTC 차트 단타 게임, 클릭마다 $500 단위로 롱/숏/청산, 수수료 0.1%, 라인 차트 실시간, 로그/손익/잔고 표시, 웹(HTML/CSS/JS)로."
+          </div>
+          <div class="status" id="statusMessage">게임 진행 중</div>
+        </section>
+
+        <aside class="log-panel">
+          <h2>최근 체결 로그</h2>
+          <ul id="tradeLog"></ul>
+        </aside>
+      </main>
+
+      <section class="controls">
+        <div class="order-size">
+          <span>주문 금액</span>
+          <button id="decreaseSize">-500</button>
+          <strong id="orderSizeValue">$500</strong>
+          <button id="increaseSize">+500</button>
+        </div>
+
+        <div class="tick-speed">
+          <label for="tickSpeedSelect">틱 속도</label>
+          <select id="tickSpeedSelect">
+            <option value="200">200ms</option>
+            <option value="300" selected>300ms</option>
+            <option value="500">500ms</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="buy" id="buyBtn">Buy (롱 진입)</button>
+          <button class="sell" id="sellBtn">Sell (숏 진입)</button>
+          <button class="close" id="closeBtn">Close (청산)</button>
+          <button class="reset" id="resetBtn">Reset</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
